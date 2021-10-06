@@ -37,3 +37,11 @@ function getWorkingHours(empCheck) {
             return 0;
     }
 }
+
+let totEmpWage = 0;
+function sum(dailyWage) {
+    totEmpWage += dailyWage;
+}
+
+empDailyWageArr.forEach(sum);
+console.log("uc 7a - Total days : " + totalWorkingDays + " Total hrs : " + totalEmpHrs + " Emp Wage : " + totEmpWage);
