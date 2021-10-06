@@ -45,3 +45,19 @@ function sum(dailyWage) {
 
 empDailyWageArr.forEach(sum);
 console.log("uc 7a - Total days : " + totalWorkingDays + " Total hrs : " + totalEmpHrs + " Emp Wage : " + totEmpWage);
+
+function totalWages(totalWage, dailyWage) {
+    return totalWage + dailyWage;
+}
+
+console.log("uc 7a - Emp wage with reduce : " + empDailyWageArr.reduce(totalWages, 0))
+
+let dailyCntr = 0;
+function mapDayWithWage(dailyWage) {
+    dailyCntr++;
+    return dailyCntr + " = " + dailyWage;
+}
+
+let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWage);
+console.log("uc 7b - daily wage map ");
+console.log(mapDayWithWageArr)
