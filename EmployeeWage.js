@@ -11,10 +11,10 @@ let totalWorkingDays = 0;
 
 let empDailyWageArr = new Array();
 
-while (totalWorkingDays < NUMBER_OF_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MONTH ) {
+while (totalWorkingDays < NUMBER_OF_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MONTH) {
     totalWorkingDays++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
-    let empHrs = getWorkingHours(empCheck); 
+    let empHrs = getWorkingHours(empCheck);
     totalEmpHrs += empHrs;
     empDailyWageArr.push(calcDailyWage(empHrs))
 }
@@ -31,9 +31,9 @@ function getWorkingHours(empCheck) {
     switch (empCheck) {
         case IS_PART_TIME:
             return PART_TIME_HOURS;
-        case IS_FULL_TIME: 
+        case IS_FULL_TIME:
             return FULL_TIME_HOURS;
-        default: 
+        default:
             return 0;
     }
 }
@@ -70,3 +70,36 @@ function fullTimeWage(dailyWage) {
 let fullTimeWageArr = mapDayWithWageArr.filter(fullTimeWage);
 console.log("uc 7c - filter full time daily wage from map ");
 console.log(fullTimeWageArr)
+
+function findFullTimeWage(dailyWage) {
+    return dailyWage.includes("160");
+}
+
+console.log("uc 7d - filter full time daily wage from map ");
+console.log(mapDayWithWageArr.find(findFullTimeWage))
+
+function isFullTimeWage(dailyWage) {
+    return dailyWage.includes("160");
+}
+
+console.log("uc 7e - check full time daily wage is true ");
+console.log(mapDayWithWageArr.every(isFullTimeWage))
+
+function isPartTimeWage(dailyWage) {
+    return dailyWage.includes("80");
+}
+
+console.log("uc 7f - check if there is any part time daily wage ");
+console.log(mapDayWithWageArr.some(isPartTimeWage))
+
+
+function totalDaysWorked(noOfDays, dailyWage) {
+    if (dailyWage > 0)
+        return noOfDays+1;
+
+    return noOfDays;
+}
+
+console.log("uc 7g - no of days emp worked");
+console.log(empDailyWageArr.reduce(totalDaysWorked, 0))
+
