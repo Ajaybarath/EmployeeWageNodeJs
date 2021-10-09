@@ -11,11 +11,13 @@ let totalWorkingDays = 0;
 
 let empDailyWageArr = new Array();
 let empDailyWageMap = new Map();
+let empDailyHrsMap = new Map();
 
 while (totalWorkingDays < NUMBER_OF_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MONTH) {
     totalWorkingDays++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs = getWorkingHours(empCheck);
+    empDailyHrsMap.set(totalWorkingDays, empHrs)
     totalEmpHrs += empHrs;
     empDailyWageArr.push(calcDailyWage(empHrs))
     empDailyWageMap.set(totalWorkingDays, calcDailyWage(empHrs))
@@ -106,3 +108,15 @@ console.log("uc 7g - no of days emp worked");
 console.log(empDailyWageArr.reduce(totalDaysWorked, 0))
 
 console.log("uc 8 - Emp wage map totalHrs : " + Array.from(empDailyWageMap.values()).reduce(totalWages, 0))
+
+
+const findTotal = (totalVal, dailyVal) => {
+    return totalVal + dailyVal;
+}
+
+let count = 0;
+let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal, 0);
+let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).reduce(findTotal, 0);
+
+console.log("uc9 a - emp wage with arrow : " + " total hours : " + totalHours + " total wage : " + totalSalary ) 
+
