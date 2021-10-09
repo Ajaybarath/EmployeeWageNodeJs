@@ -120,3 +120,16 @@ let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).reduce(find
 
 console.log("uc9 a - emp wage with arrow : " + " total hours : " + totalHours + " total wage : " + totalSalary ) 
 
+let nonWorkingDays = new Array();
+let partWorkingDays = new Array();
+let fullWorkingDays = new Array();
+
+empDailyHrsMap.forEach((values, key, map) => {
+    if (values == 8) fullWorkingDays.push(key);
+    else if (values == 4) partWorkingDays.push(key)
+    else nonWorkingDays.push(key)
+});
+
+console.log("fullWorkingDays : " + fullWorkingDays)
+console.log("partWorkingDays : " + partWorkingDays)
+console.log("nonWorkingDays : " + nonWorkingDays)
