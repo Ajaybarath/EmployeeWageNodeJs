@@ -158,3 +158,8 @@ let totalHour = empDailyHrsAndWageArr
    
     console.log("uc11A - total hours : " + totalHour + " total wage : " + totalWage)
 
+process.stdout.write("uc 11b logging full working days")
+
+empDailyHrsAndWageArr
+    .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 8)
+    .forEach((dailyHrsAndWage) => process.stdout.write(dailyHrsAndWage.toString()))
