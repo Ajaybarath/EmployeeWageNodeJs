@@ -24,9 +24,9 @@ while (totalWorkingDays < NUMBER_OF_WORKING_DAYS && totalEmpHrs <= MAX_HRS_IN_MO
     empDailyWageMap.set(totalWorkingDays, calcDailyWage(empHrs))
 
     empDailyHrsAndWageArr.push({
-        dayNum:totalWorkingDays,
-        dailyHours:empHrs,
-        dailyWage:calcDailyWage(empHrs),
+        dayNum: totalWorkingDays,
+        dailyHours: empHrs,
+        dailyWage: calcDailyWage(empHrs),
         toString() {
             return '\nDay' + this.dayNum + ' => Working Hour is ' + this.dailyHours + ' And wage Earned = ' + this.dailyWage
         },
@@ -112,7 +112,7 @@ console.log(mapDayWithWageArr.some(isPartTimeWage))
 
 function totalDaysWorked(noOfDays, dailyWage) {
     if (dailyWage > 0)
-        return noOfDays+1;
+        return noOfDays + 1;
 
     return noOfDays;
 }
@@ -131,7 +131,7 @@ let count = 0;
 let totalHours = Array.from(empDailyHrsMap.values()).reduce(findTotal, 0);
 let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).reduce(findTotal, 0);
 
-console.log("uc9 a - emp wage with arrow : " + " total hours : " + totalHours + " total wage : " + totalSalary ) 
+console.log("uc9 a - emp wage with arrow : " + " total hours : " + totalHours + " total wage : " + totalSalary)
 
 let nonWorkingDays = new Array();
 let partWorkingDays = new Array();
@@ -146,3 +146,15 @@ empDailyHrsMap.forEach((values, key, map) => {
 console.log("fullWorkingDays : " + fullWorkingDays)
 console.log("partWorkingDays : " + partWorkingDays)
 console.log("nonWorkingDays : " + nonWorkingDays)
+
+
+let totalWage = empDailyHrsAndWageArr
+    .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+    .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0)
+
+let totalHour = empDailyHrsAndWageArr
+    .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+    .reduce((totalHour, dailyHrsAndWage) => totalHour += dailyHrsAndWage.dailyHours, 0)
+   
+    console.log("uc11A - total hours : " + totalHour + " total wage : " + totalWage)
+
