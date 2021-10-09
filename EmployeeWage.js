@@ -155,11 +155,17 @@ let totalWage = empDailyHrsAndWageArr
 let totalHour = empDailyHrsAndWageArr
     .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
     .reduce((totalHour, dailyHrsAndWage) => totalHour += dailyHrsAndWage.dailyHours, 0)
-   
-    console.log("uc11A - total hours : " + totalHour + " total wage : " + totalWage)
+
+console.log("uc11A - total hours : " + totalHour + " total wage : " + totalWage)
 
 process.stdout.write("uc 11b logging full working days")
 
 empDailyHrsAndWageArr
     .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 8)
     .forEach((dailyHrsAndWage) => process.stdout.write(dailyHrsAndWage.toString()))
+
+let partWorkingDaysStrArr = empDailyHrsAndWageArr
+    .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 4)
+    .map((dailyHrsAndWage) => dailyHrsAndWage.toString())
+
+console.log("\nuc 11c partWorkingDaysString : " + partWorkingDaysStrArr)
