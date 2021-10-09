@@ -169,3 +169,10 @@ let partWorkingDaysStrArr = empDailyHrsAndWageArr
     .map((dailyHrsAndWage) => dailyHrsAndWage.toString())
 
 console.log("\nuc 11c partWorkingDaysString : " + partWorkingDaysStrArr)
+
+
+let nonWorkingDaysNums = empDailyHrsAndWageArr
+    .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 0)
+    .map((dailyHrsAndWage) => dailyHrsAndWage.dayNum)
+
+console.log("\nuc 11c nonWorkingDays : " + nonWorkingDaysNums)
